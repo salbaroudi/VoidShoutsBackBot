@@ -1,0 +1,11 @@
+{
+  "name": "voidshoutsbacktwitter",
+  "version": "0.1.0",
+  "description": "Simple Script/Bot to find high-quality tweets via filtered streaming.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sean al-Baroudi",
+  "license": "MIT"
+}
