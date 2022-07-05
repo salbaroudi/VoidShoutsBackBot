@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title> Twitter Filtered Stream Explorer </title>
+  <link rel="stylesheet" href="./index.css" />
+
+  </head>
+  <body>
+    <div id="root"></div>
+    <div class="grid-container topcont">
+      <div class="grid-item output bg-border">
+        <p> Our output response will go here...</p>
+      </div>
+      <div class="grid-item inputs bg-border">
+        <div> ::Filter Strings:: </div>
+        <input id="i1" class="grid-item bg-border inputbox" />
+        <input id="i2" class="grid-item bg-border inputbox" />
+        <input id="i3" class="grid-item bg-border inputbox" />
+        <input id="i4" class="grid-item bg-border inputbox" />
+        <input id="i5" class="grid-item bg-border inputbox" />
+        <input id="i6" class="grid-item bg-border inputbox" />
+        <input id="i7" class="grid-item bg-border inputbox" />
+        <input id="i8" class="grid-item bg-border inputbox" />
+        <input id="i9" class="grid-item bg-border inputbox" />
+        <input id="i10" class="grid-item bg-border inputbox" />
+      </div>
+    </div>
+    <div class="grid-container bottomcont">
+      <div class="grid-item streamlimits bg-border">
+        <p> Our stream limits will go here...</p>
+      </div>
+      <div class="grid-item buttons bg-border">
+        <button id="connect" class="button bg-border"> Connect </button>
+        <button id="submitFilter" class="button bg-border"> Submit Filter </button>
+        <br />
+        <button id="checklimit" class="button bg-border"> Check Limits </button>
+        <button id="disconnect" class="button bg-border"> Disconnect </button>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+
+</html>
+
+<!-- References:
+
+[1] vertical-align usage:
+https://stackoverflow.com/questions/8120466/missalignment-with-inline-block-other-elements-pushed-down
+
+[2] Can't use height percentage on block elements:
+https://stackoverflow.com/questions/5657964/css-why-doesn-t-percentage-height-work
+
+
+-->

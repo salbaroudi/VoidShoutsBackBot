@@ -7,7 +7,7 @@ const needle = require('needle');
 // The code below sets the bearer token from your environment variables
 // To set environment variables on macOS or Linux, run the export command below from the terminal:
 // export BEARER_TOKEN='YOUR-TOKEN'
-const token = "???""
+const token = "AAAAAAAAAAAAAAAAAAAAAK4meQEAAAAA33n6zqLKjDcJ3MntjRz8Mw9R%2Fhs%3DalvzoZvqKMZDs0nC4A65HaZE8IjK9ZIjZLVcemxQHqzEHSrDfs";
 
 const rulesURL = 'https://api.twitter.com/2/tweets/search/stream/rules';
 const streamURL = 'https://api.twitter.com/2/tweets/search/stream';
@@ -101,9 +101,16 @@ function streamConnect(retryAttempt) {
     const stream = needle.get(streamURL, {
         headers: {
             "User-Agent": "v2FilterStreamJS",
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
         },
         timeout: 20000
+    });
+
+    stream.on('headers', function(headers) {
+      console.log("on Headers called!");
+      console.log("x-rate-limit-limit:: " +  headers["x-rate-limit-limit"]);
+      console.log("x-rate-limit-reset:: " +  headers["x-rate-limit-reset"]);
+      console.log("x-rate-limit-remaining:: " +  headers["x-rate-limit-remaining"]);
     });
 
     stream.on('data', data => {
@@ -161,3 +168,14 @@ function streamConnect(retryAttempt) {
     // Listen to the stream.
     streamConnect(0);
 })();
+
+/*
+
+[] Getting response headers for needle
+https://stackoverflow.com/questions/31649901/how-to-get-response-headers-when-using-needle-js-in-streaming-mode
+
+
+
+
+
+*/
