@@ -171,11 +171,14 @@ function streamConnect(retryAttempt) {
 
 /*
 
-[] Getting response headers for needle.
+[1] Getting response headers for needle.
 https://stackoverflow.com/questions/31649901/how-to-get-response-headers-when-using-needle-js-in-streaming-mode
 
+[2] Graceful disconnection cannot occur - break the socket and just reconnect later.
+https://twittercommunity.com/t/how-to-disconnect-from-twitter-streaming-api-v2/154328/6
 
-
+[3] Sending http requests from the front end (different options):
+https://stackoverflow.com/questions/47881699/what-are-the-ways-to-send-normal-http-requests-from-the-front-end
 
 
 */
