@@ -6,28 +6,29 @@
 
   </head>
   <body>
-    <div id="root"></div>
     <div class="grid-container topcont">
-      <div class="grid-item output bg-border">
-        <p> Our output response will go here...</p>
+      <div id="outputs" class="grid-item output bg-border">
       </div>
       <div class="grid-item inputs bg-border">
         <div> ::Filter Strings:: </div>
-        <input id="i1" class="grid-item bg-border inputbox" />
-        <input id="i2" class="grid-item bg-border inputbox" />
-        <input id="i3" class="grid-item bg-border inputbox" />
-        <input id="i4" class="grid-item bg-border inputbox" />
-        <input id="i5" class="grid-item bg-border inputbox" />
-        <input id="i6" class="grid-item bg-border inputbox" />
-        <input id="i7" class="grid-item bg-border inputbox" />
-        <input id="i8" class="grid-item bg-border inputbox" />
-        <input id="i9" class="grid-item bg-border inputbox" />
-        <input id="i10" class="grid-item bg-border inputbox" />
+        <input id="input1" class="grid-item bg-border inputbox" />
+        <input id="input2" class="grid-item bg-border inputbox" />
+        <input id="input3" class="grid-item bg-border inputbox" />
+        <input id="input4" class="grid-item bg-border inputbox" />
+        <input id="input5" class="grid-item bg-border inputbox" />
+        <input id="input6" class="grid-item bg-border inputbox" />
+        <input id="input7" class="grid-item bg-border inputbox" />
+        <input id="input8" class="grid-item bg-border inputbox" />
+        <input id="input9" class="grid-item bg-border inputbox" />
+        <input id="input10" class="grid-item bg-border inputbox" />
+      </div>
+      <div id="filepath" class="grid-item filepath bg-border">
+        <div> ::Write Path:: </div>
+        <input id="inputfilepath" class="grid-item bg-border inputbox" />
       </div>
     </div>
     <div class="grid-container bottomcont">
-      <div class="grid-item streamlimits bg-border">
-        <p> Our stream limits will go here...</p>
+      <div id="streamlimitoutput" class="grid-item streamlimits bg-border">
       </div>
       <div class="grid-item buttons bg-border">
         <button id="connect" class="button bg-border"> Connect </button>
@@ -37,6 +38,7 @@
         <button id="disconnect" class="button bg-border"> Disconnect </button>
       </div>
     </div>
+    <script src="./jquery-3.6.0.js"></script>
     <script src="./index.js"></script>
   </body>
 

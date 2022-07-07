@@ -5,6 +5,20 @@ body {
   color:#d59b00;
 }
 
+div::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+div::-webkit-scrollbar-track {
+  background: #07131C;        /* color of the tracking area */
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: #d59b00;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid #d59b00;  /* creates padding around scroll thumb */
+}
+
 .root {}
 .topcont {}
 .bottomcont {}
@@ -36,7 +50,14 @@ body {
   width:70%;
   color:inheret;
   font-size:16pt;
+  text-align:left;
+  overflow:auto;
 }
+
+.tweet {
+  padding: 2px;
+}
+
 
 .inputs {
     height:70%;
@@ -45,11 +66,22 @@ body {
     vertical-align: bottom;
 }
 
+.filepath {
+  width: 29%;
+  margin 0px;
+  vertical-align:middle;
+}
+
 .streamlimits {
     height:78px;
     width:70%;
     font-size:14pt;
     color:inherit;
+}
+
+.sessioninfo {
+  padding: 5px;
+  font-size: 20px;
 }
 
 .buttons {
