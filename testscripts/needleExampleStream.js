@@ -146,7 +146,6 @@ function streamConnect(retryAttempt) {
 
 }
 
-
 (async () => {
     let currentRules;
 

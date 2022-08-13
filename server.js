@@ -46,11 +46,7 @@ app.post("/testpost", function(req, res) {
   res.end(JSON.stringify(jsonResponse));
 })
 
-
-
-
 app.listen(3000); //just listen on standard port, no callback.
-
 
 /* References:
 
