@@ -1,25 +1,16 @@
-const rules = [{ 'value': '-lol -lmao -fwiw -fail -lul -moar -poast -sucks -ofc -stan','tag': 'Midwit filter' },
-    { 'value':'-Disney -CNN -BBC -FOX -ABC -Marvel -Netflix -Nintendo -Pokemon','tag':'MSM filter' },
-    { 'value':'-shitlord -cishits -terf -transphobe -fucking -slur -trigger -bigot -hateful -girldick -radfems','tag':'SJW filter' },
-    { 'value':'-fr -frfr -"fr fr" -vibe -vibes -"vibe check" -sus -bussin -"just like me" -dis','tag':'TPOT filter' },
-    { 'value':'-libtard -midwit -cuck -alpha -beta -libs -J6','tag':'right-wing twitter' },
-    { 'value':'-bojo -tosser -fools -idiots -partygate','tag':'Lib Britons' },
-    { 'value':'-bio:he/him -bio:journalist -bio:they/them -bio:she/her -bio:writer -bio:consultant -bio:MBA -bio:grind -bio:hustle','tag':'bio screener' },
-
-    { 'value':'identity expression ','tag':'keywords 1' },
-    { 'value':'learning challenge','tag':'keywords 2' },
-    { 'value':'bio:phd OR bio:msc OR bio:software OR bio:math OR bio:skeptic OR bio:artist OR bio:','tag':'' },
-    { 'value':'','tag':'' },
-    { 'value':'','tag':'' },
-    { 'value':'','tag':'' },
+const rules = [ { "value":"(identity OR myself OR oneself) (self-respect OR dignity) (boundaries OR limits)","tag":"SelfReflection"},
+    { "value":"'Warnocks Dilemma' OR 'shouting into the void' OR 'is anyone out there?'","tag":"NoResponses" },
+    { "value":"(bio:phd OR bio:msc) (bio:software OR bio:math) (bio:skeptic OR bio:artist)","tag":"UnicornSearch" },
+    { "value":"has:images (ICBM OR rocket OR spacecraft OR missile)","tag":"RocketImages" }
     ];
 
+{ "value":"(identity OR myself OR oneself) (self-respect OR dignity) (boundaries OR limits)","tag":"SelfReflection"}
 
-    const rules = [{ 'value': '-lol -lmao -fwiw -fail -lul -moar -poast -sucks -ofc -stan','tag': 'Midwit filter' },
-        { 'value':'-Disney -CNN -BBC -FOX -ABC -Marvel -Netflix -Nintendo -Pokemon','tag':'MSM filter' },
-        { 'value':'myself OR identity OR expression ','tag':'keywords 1' },
-        { 'value':'learning OR freedom OR challenge','tag':'keywords 2' }
-        ];
+{ "value":"'Warnocks Dilemma' OR 'shouting into the void' OR 'is anyone out there?'","tag":"NoResponses" }
+
+{ "value":"(bio:phd OR bio:msc) (bio:software OR bio:math) (bio:skeptic OR bio:artist)","tag":"UnicornSearch" }
+
+{ "value":"has:images (ICBM OR rocket OR spacecraft OR missile)","tag":"RocketImages" }
 
 
 

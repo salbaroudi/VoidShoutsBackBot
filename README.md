@@ -29,4 +29,5 @@ Technically, the fastest way to do this would be to just copy and tweak the foll
 However...my understanding of Express is shoddy, and completely intertwined with React usage.
 
 Instead, I will use jQuery to talk to an Express Middleware and Back-end, to get our tweets. This is more involved, but will fill in a lot of holes in my
-web dev understanding. This is also required because Twitter APIv2 will trigger CORS requests - it cannot easily be run in browser. As I can find no obvious Parcel/Browserify solutions, the endpoints must be called from a back-end script. A back-end request statement should in theory not trigger CORS, as far as I am aware.
+web dev understanding. This is also required because Twitter APIv2 will trigger CORS requests - it cannot easily be run in browser. As I can find no obvious 
+Parcel/Browserify solutions, the endpoints must be called from a back-end script. A back-end request statement should in theory not trigger CORS, as far as I am aware.

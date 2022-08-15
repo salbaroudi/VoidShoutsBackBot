@@ -4,7 +4,7 @@
 **/.cache
 **/client/dist
 **/Ganache
-
+**/filters.txt
 .pnp.js
 
 # testing

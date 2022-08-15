@@ -27,7 +27,7 @@ const rules = [
 */
 
 const rules =  [{'value': '"tv show" -"Star Wars" -"Peaky Blinders" -Rick -Morty -boys','tag': 'Television'},
-{value:'sucks OR terrible OR crap OR ass',"tag": "bad"}];
+{value:'is:reply -"fr fr" -frfr -bro -mid -yall -bruh',"tag": "replies"}];
 
 async function getAllRules() {
 
