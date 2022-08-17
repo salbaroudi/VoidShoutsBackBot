@@ -5,6 +5,8 @@
 **/client/dist
 **/Ganache
 **/filters.txt
+**/CURLchecks.txt
+
 .pnp.js
 
 # testing

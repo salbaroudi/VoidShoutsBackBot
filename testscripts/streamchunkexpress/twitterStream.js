@@ -24,7 +24,7 @@ if (process.env.PORT) {
 //URL and canned responses objects.
 //--------------------------------
 const streamURL = new URL(
-  "https://api.twitter.com/2/tweets/search/stream"
+  "https://api.twitter.com/2/tweets/search/stream?tweet.fields=context_annotations&expansions=author_id"
 );
 const rulesURL = new URL(
   "https://api.twitter.com/2/tweets/search/stream/rules"
@@ -184,25 +184,37 @@ The general idea: we want to call a funcition with a certain timeout, AFTER its 
 Thus, the function must call setTimeout with ITSELF.
 */
 
+///From this example, we showed how to basically stream text to our UI console. Our chunks can be large (100s of text words).
+//So we don't need any special controller or Reader options to handle this...assuming we can use JSON.parse() on our chunk data
+//reliably.
+var sendAndSleep = function (response, counter, jsonObj) {
+  if (counter > 20) {
+    response.end();
+  } else {
+    jsonObj.value=counter;
+    jsonObj.field1="test".repeat(counter);
+    response.write(JSON.stringify(jsonObj));
+    counter=counter+2;
+    setTimeout(function () {
+      sendAndSleep(response, counter,jsonObj);
+    }, 200)
+  };
+};
+
 //Test Stream route.
 app.get("/api/stream", async (req, res) => {
   res.setHeader('Content-Type', 'application/json'); //text/html; charset=utf-8
   res.setHeader('Transfer-Encoding', 'chunked');
-    var jsonString = "";
-    var decoder = new TextDecoder();
-     fetch(streamURL,{ auth: {bearer: BEARER_TOKEN}, json: true })
-     .then(function (response) {
-          let myReader = response.body.getReader();
-          myReader.read().then(function processResult(result) { //result must be provided by whatever read returns, and then() unpacks...
-          if (result.done) { return; }
-          jsonString = decoder.decode(result.value, {stream: true});
-          console.log(jsonString);
-          return myReader.read().then(processResult);
-      });
-    });
+
+  sendAndSleep(res,0,{value:0,field1:"t",field2:"constant string..."});
+
 });
 
+
+
+
 server.listen(port, () => console.log(`Listening on port ${port}`));
+
 
 /* References:
 Node-HTTP Streaming Code: https://stackoverflow.com/questions/38788721/how-do-i-stream-response-in-express

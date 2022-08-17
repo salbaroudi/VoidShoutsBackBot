@@ -73,7 +73,6 @@ function getLimits() {
     });
 }
 
-//Using fetch, we set up a reader on the response.body that is periodically being assembled (via chunking).
 //Note the recursive onComplete function we use. It terminates itself when result.done()
 //To process an unknown amount of data, the below function structure is a kind of design pattern to know!
 
