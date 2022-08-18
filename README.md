@@ -1,33 +1,18 @@
-## Building a Flitered Stream Twitter Bot.
+## Building a Flitered Stream Twitter Bot:
 
-Before I dive into building the bot, I need to get some filtered stream data and test filtering strings,
-to narrow down my selected tweet stream. From this, I need to use data analysis + metrics to quantify
-how "good" my narrowed stream is, and come up with a once-a-day tweet selector criteria.
+This project illustrates a data pipeline one can use to refine filtered stream rules, in which to program a twitter bot. Users work with a simple web-UI to enter rules, and mine tweets over an extended period of collection. The tweet sets are then analysed using a Jupyter notebook, to further refine the rules. This process is repeated until an acceptable set of rules is found. 
 
-For the first stage of this project, I need to
+The pipeline sections are as follows:
 
-1) Access the Twitter API V2 with a dynamic console that I will build myself.
+### 1_DataMineInterface:
 
-2) Find a rough parameter set that gives us "good enough" tweets.
+Uses a JQuery Front-End to communicate and control an Express.JS backend. This back-end acts as middleware, and acts as a simple interface for users to manipulate filtered stream rules, and stream from a filtered stream endpoint. Matched tweets are printed to console, and written to a user specified output file.
 
-3) Collect tweets using a dedicated connection, and write them to JSON files.
+### 2_RuleRefinement:
 
-Tweets will be inspected manually, and our filtering rules will be refined.
-There is potential for a Jupyter Data Project here...but one thing at a time.
+Tweet files are stored here, as well as Jupyter notebooks for analysis. 
 
+### 3_BotAutomation:
 
-## Proposed Browser Console:
+Users define their run-time parameters for a simple Heroku application, which skims the "best" tweets over a given time period, and retweets them for the user.
 
-Will use the following technologies.
-
-- HTML+CSS3+JS+JQuery => To send requests to our middleware/back-end.
-
-- Express.js: will interface with our Twitter Endpoints, gather tweets and act as middleware.
-
-Technically, the fastest way to do this would be to just copy and tweak the following [official Twitter tutorial](https://developer.twitter.com/en/docs/tutorials/building-an-app-to-stream-tweets), which merges common React patterns and Express to achieve a similar result. [This tutorial](https://www.tutorialspoint.com/expressjs/index.htm) is also used to setup my project 
-
-However...my understanding of Express is shoddy, and completely intertwined with React usage.
-
-Instead, I will use jQuery to talk to an Express Middleware and Back-end, to get our tweets. This is more involved, but will fill in a lot of holes in my
-web dev understanding. This is also required because Twitter APIv2 will trigger CORS requests - it cannot easily be run in browser. As I can find no obvious 
-Parcel/Browserify solutions, the endpoints must be called from a back-end script. A back-end request statement should in theory not trigger CORS, as far as I am aware.

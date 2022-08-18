@@ -73,14 +73,22 @@ function getLimits() {
     });
 }
 
+//Using fetch, we set up a reader on the response.body that is periodically being assembled (via chunking).
 //Note the recursive onComplete function we use. It terminates itself when result.done()
 //To process an unknown amount of data, the below function structure is a kind of design pattern to know!
 
-function streamConnectTest() {
+function streamConnect() {
+    //First, lets get our fileName parameter.
+    let filePath = $( "#inputfilepath" ).val();
+
+    if (filePath.length == 0) {
+        alert("Empty filepath. Please check input box");
+        return;
+    }
+
     //Lets use fetch to process our stream with a reader.
-    let reqObj = new Request(TS_FSTREAM_URL, {method:"GET",mode:"cors",cache:"no-store"});
+    let reqObj = new Request(TS_FSTREAM_URL+filePath, {method:"GET",mode:"cors",cache:"no-store"});
     var decoder = new TextDecoder();
-    let recieved = 0;
     var jsonString; var jsonObj;
     let hold = fetch(reqObj)
     .then(function (response) {
@@ -89,10 +97,10 @@ function streamConnectTest() {
             if (result.done) {
                 return;
             }
-            recieved += result.value.length;
             jsonString = decoder.decode(result.value, {stream: true});
-            jsonObj = JSON.parse(jsonString);
-            console.log(jsonObj.field1); //lets see what we get...
+            console.log(jsonString);
+            //jsonObj = JSON.parse(jsonString);
+            //console.log(jsonObj.field1); //lets see what we get...
             return myReader.read().then(processResult);
         });
     });
@@ -100,8 +108,8 @@ function streamConnectTest() {
 
 
 //Setup Buttons:
-$( "#queryRules" ).on("click", queryRules);
+$( "#queryRules" ).on("click", queryRules)
 $( "#updateRules" ).on("click", updateRules);
 $( "#deleteRules" ).on("click", deleteRules);
-$( "#streamConnect" ).on("click", streamConnectTest);
+$( "#streamConnect" ).on("click", streamConnect);
 
