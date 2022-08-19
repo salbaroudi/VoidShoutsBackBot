@@ -124,9 +124,11 @@ app.post("/api/rules", async (req, res) => {
   }
 });
 
+//This is fucked. Why?
 //This route is used  to delete all our rules. We hide ID's from user UI, for simiplicity. 
 app.get("/api/rules/delete", async (req, res) => {
   const idArray = [];
+
   try {
     const response = await get({ url: rulesURL, auth: { bearer: BEARER_TOKEN }, json: true });
 
@@ -138,11 +140,13 @@ app.get("/api/rules/delete", async (req, res) => {
       }
     }
 
+    //We get this far and then FREEZE. WHY?
     //No Errors, pull the IDs
     idArray = (response.body.data).map((entry) => entry.id);
     console.log("IDs found:: " + idArray);
     //Now lets make a delete request.
     let ruleChanges = { delete: { ids: idArray } };
+
     const response2 = await post({ url: rulesURL, auth: { bearer: BEARER_TOKEN, }, json: ruleChanges });
 
     if (response2.statusCode === 200 || response2.statusCode === 201) {
@@ -194,7 +198,7 @@ app.get("/api/stream/:fileName", async (req, res) => {
       try {
         clientResponse.write(data);
         const jsonObj = JSON.parse(data);
-        fs.writeFile(filepath, JSON.stringify(jsonObj)+"\r\n", { flag: 'a+' }, err => {});
+        fs.writeFile(filepath, JSON.stringify(jsonObj)+"\r\n", { flag: 'a' }, err => {});
         console.log(jsonObj);
         retryAttempt = 0;
       } catch (e) {

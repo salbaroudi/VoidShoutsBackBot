@@ -17,7 +17,7 @@ function queryRules() {
 function deleteRules() {
     //First, lets just send a request.
     $.get(TS_RULES_URL_DELETE, function(data, status) {
-        $( "#outputs" ).html(data);
+        $( "#outputs" ).html("");
     });
   };
 

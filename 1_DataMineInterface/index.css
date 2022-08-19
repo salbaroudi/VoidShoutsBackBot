@@ -47,11 +47,13 @@ div::-webkit-scrollbar-thumb {
 }
 
 .output {
-  height:800px;
-  width:70%;
+  height:600px;
+  width:91%;
   color:inheret;
   font-size:16pt;
   text-align:left;
+  display:inline-block;
+
   overflow:auto;
 }
 
@@ -59,25 +61,11 @@ div::-webkit-scrollbar-thumb {
   padding: 2px;
 }
 
-
-.inputs {
-    height:70%;
-    width:29%;
-    margin: 0px 0px 0px 0px;
-    vertical-align: bottom;
-}
-
-.sideTitleParams {
-  width:10%;
-  margin:0px;
-  display:inline-block;
-}
-
 .filepath {
   width: 35%;
   margin 0px;
-  padding-top:10px;
-  padding-bottom:10px;
+  padding-top:7px;
+  padding-bottom:8px;
   display:inline-block;
 }
 
@@ -103,10 +91,16 @@ div::-webkit-scrollbar-thumb {
 
 }
 
+.inputs {
+  width:91%;
+  margin: 0px 25px 0px 0px;
+  padding-bottom:10px;
+}
+
 .inputbox {
-  width:280px;
-  height:20px;
-  font-size:11px;
+  width:95%;
+  height:28px;
+  font-size:18px;
   padding: 2px 2px 2px 2px;
   background-color:#0C2334;
   border-style:inset;
@@ -122,7 +116,31 @@ div::-webkit-scrollbar-thumb {
   color:inherit;
 }
 
-.rotate {
+.rotate1 {
   margin-top:20px;
   transform: rotate(45deg);
+  font-size:28px;
+}
+
+.rotate2 {
+  position:relative;
+  top:75px;
+  transform: rotate(45deg);
+  margin-top:20px;
+  font-size:28px;
+}
+
+.rotate3 {
+  position:relative;
+  top:300px;
+  transform: rotate(50deg);
+  margin-top:20px;
+  font-size:22px;
+
+}
+
+.sideTitleParams {
+  width:10%;
+  margin:0px;
+  display:inline-block;
 }
