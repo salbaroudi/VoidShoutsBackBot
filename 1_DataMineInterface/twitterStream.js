@@ -30,7 +30,7 @@ let fileNamePrefix = "";
 //URL and canned responses objects.
 //--------------------------------
 const streamURL = new URL(
-  "https://api.twitter.com/2/tweets/search/stream?tweet.fields=created_at,public_metrics&expansions=author_id"
+  "https://api.twitter.com/2/tweets/search/stream?tweet.fields=created_at,public_metrics&expansions=author_id,referenced_tweets.id"
 );
 const rulesURL = new URL(
   "https://api.twitter.com/2/tweets/search/stream/rules"
