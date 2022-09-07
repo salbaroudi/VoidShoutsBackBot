@@ -127,6 +127,17 @@ def remove_noneng_chars(data):
                       "]+", re.UNICODE)
     return re.sub(emoj, '', data)
 
+def remove_punct(data):
+    replace = re.compile("["
+        "."
+        "!"
+        "?"
+        "\n"
+        "\""
+        ","
+                    "]+", re.UNICODE)
+    return re.sub(replace,"",data)
+
 '''
 Another stirng function, does what I need. This was written by user Boa on 
 Stack Overflow: https://stackoverflow.com/questions/30606124/most-efficient-way-to-remove-multiple-substrings-from-string
