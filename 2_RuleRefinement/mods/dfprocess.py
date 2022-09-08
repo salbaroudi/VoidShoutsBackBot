@@ -99,11 +99,26 @@ def generatedataframe(path,writeLimit):
     tweetDF.info()
     return tweetDF
 
+'''
+Awful Slang strings to eliminate
+'''
+
+screenWords = ["celebs","frfr","fr fr","lulz","rofl",
+              "roflmao","lmao","lol","chuds","yall","y'all",
+              "dem","demz","hella","cums","onlyfans","only fans",
+              "plz","pls","noob","grindset","vibe","vibrations",
+              "gurl","chill","nft","coom","cringe","based","alpha",
+               "beta","sigma","mindset","babe","tpot","flex",
+               "moon","pumps","apes","celeb","cuck","cucked",
+              "smh","goes hard"," stan ","jesus","lord"," da ",
+               "ass","mfers","mfer","thicc","nigga","!!","!!!",
+              "??","???","http://","https://","ya'll"]
+
+
 '''Credit for this non-english character removal function goes to 
 Karim Omaya, their answer was found at this stack overflow page:
 https://stackoverflow.com/questions/33404752/removing-emojis-from-a-string-in-python
 '''
-
 def remove_noneng_chars(data):
     emoj = re.compile("["
         u"\U0001F600-\U0001F64F"  # emoticons
@@ -133,10 +148,23 @@ def remove_punct(data):
         "!"
         "?"
         "\n"
+        "/"
         "\""
         ","
+        "}"
+        "{"
+        "["
+        "]"
+        "<"
+        ">"
+        "("
+        ")"
+        "+"
+        ":"
+        ";"
                     "]+", re.UNICODE)
     return re.sub(replace,"",data)
+
 
 '''
 Another stirng function, does what I need. This was written by user Boa on 
@@ -149,3 +177,11 @@ def eliminate_slang_strings(cur_string, replace_list):
         if cur_word in cur_string:
             retWord = ""
     return retWord
+
+def cleanDF(tDF):
+    tDF.drop_duplicates(subset=["text"],inplace=True)
+    tDF['text'] = tDF["text"].apply(lambda s: s.lower())
+    tDF['text'] = tDF["text"].apply(lambda s: eliminate_slang_strings(s,screenWords))
+    tDF['text'] = tDF["text"].apply(lambda s: remove_punct(s))
+    tDF['text'] = tDF["text"].apply(lambda s: remove_noneng_chars(s))
+    return tDF

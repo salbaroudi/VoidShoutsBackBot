@@ -24,7 +24,6 @@ if (process.env.PORT) {
   throw Error("Configuration file (.env) NOT loaded. Please check project configuration.")
 }
 
-
 let fileNamePrefix = "";
 //------------------------
 //URL and canned responses objects.
@@ -139,11 +138,9 @@ app.get("/api/rules/delete", async (req, res) => {
         throw new Error(response.body.error.message);
       }
     }
-
-    //We get this far and then FREEZE. WHY?
-    //No Errors, pull the IDs
-    idArray = (response.body.data).map((entry) => entry.id);
+    const idArray = (response.body.data).map(entry => entry.id);
     console.log("IDs found:: " + idArray);
+    console.log(idArray);
     //Now lets make a delete request.
     let ruleChanges = { delete: { ids: idArray } };
 
@@ -233,9 +230,7 @@ app.get("/api/stream/:fileName", async (req, res) => {
   
 });
 
-
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
-
 
 /* References:
 Large code snippets have been taken from the following sources, and modified accordingly:
