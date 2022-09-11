@@ -178,10 +178,66 @@ def eliminate_slang_strings(cur_string, replace_list):
             retWord = ""
     return retWord
 
+def insert_hashandset(textSeries,wSet,wDict):
+    for text in textSeries:
+        sTokens = text.split(" ")
+        #Lets screen out tokens that are <= 2 in length,
+        #Or are just punctuation or spaces
+        for i in range(0,len(sTokens)):
+            hold = sTokens[i]
+            if ((len(hold) > 3)):
+                wSet.add(hold)
+                if (hold in wDict):
+                    wDict[hold] = wDict[hold] + 1
+                else:
+                    wDict[hold] = 1
+    return
+
+#For each text string in our saiDF:
+#Separate out good rows from bad (two separate dataframes)
+#A SIX argument header. God help us.
+def setdiffprocess(dF,indices,gSet,gDict,bSet,bDict):
+    goodSer = dF["text"].iloc[indices]
+    badSer = dF[~dF.index.isin(indices)]["text"]
+    #mutate passed objects like crazy
+    insert_hashandset(goodSer,gSet,gDict)
+    insert_hashandset(badSer,bSet,bDict)
+    return #the end.
+
+
+#Interesting way to get rid of empty strings...they are interpreted as false
+# https://stackoverflow.com/questions/29314033/drop-rows-containing-empty-cells-from-a-pandas-dataframe
 def cleanDF(tDF):
-    tDF.drop_duplicates(subset=["text"],inplace=True)
     tDF['text'] = tDF["text"].apply(lambda s: s.lower())
     tDF['text'] = tDF["text"].apply(lambda s: eliminate_slang_strings(s,screenWords))
     tDF['text'] = tDF["text"].apply(lambda s: remove_punct(s))
     tDF['text'] = tDF["text"].apply(lambda s: remove_noneng_chars(s))
-    return tDF
+    tDF.drop_duplicates(subset=["text"],inplace=True)
+    tDF = tDF[tDF['text'].astype(bool)]
+    return tDF 
+
+#String, DataFrame -> DataFrame [Side effect:file output]
+def getTagDF(tagName,path,dF):
+    tagList = (dF.tag.unique()).tolist()
+    if (tagName not in tagList):
+        raise Exception("Error: TagName Invalid. Check Dataframe!")
+    subDF = (dF[dF["tag"] == tagName]).copy(deep=True).reset_index(drop=True).reset_index()
+    if (len(path) == 0):
+        raise Exception("Error: Empty path string.")        
+    subDF.loc[:,["index","tweetid","text"]].to_json(path,orient="records",index=True,force_ascii=False)    
+    return subDF
+
+def disp_topwords(words,wDict,limit):
+    wordDF = pd.DataFrame(columns=["word","count"])
+    wordList = []
+    countList = []
+    for word in words:
+        wordList.append(word)
+        countList.append(wDict[word])
+    
+    wordDF["word"] = pd.Series(wordList)
+    wordDF["count"] = pd.Series(countList,dtype="int16")
+
+    wordDF.sort_values(ascending=False,axis="index",by="count",inplace=True)
+    display(wordDF.head(limit))
+    return

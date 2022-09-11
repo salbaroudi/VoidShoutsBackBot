@@ -8,16 +8,13 @@ The pipeline sections are as follows:
 
 Uses a JQuery front-end to communicate and control an Express.JS back-end. This back-end acts as middleware, working as a simple interface for users to manipulate rules and stream from an endpoint. Matched tweets are printed to console, and written to a user specified output file.
 
-**Status:** Functioning, with some issues (usable).
-
 ### 2_RuleRefinement:
 
-Tweet files are stored here, as well as Jupyter Notebooks for analysis. 
-
-**Status:** In development.
+Tweet files are stored here, as well as Jupyter Notebooks for analysis. Some basic data frame analysis, and a set-difference algorithm to refine the rules (based on looking at frequencies of words in preferred and rejected tweets) has been implemented.
 
 ### 3_BotAutomation:
 
-Users define their run-time parameters for a simple Heroku application, which skims the "best" tweets over a given time period, and retweets them for the user.
-
 **Status:** Not started.
+
+
+For now, the first two stages of this project have been worked out. For an extended period, rules will be developed and tested using the codebase I have built so far. Once a good set of rules is refined, the final bot script will be implemented, so this project can run on its own.

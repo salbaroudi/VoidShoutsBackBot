@@ -1,0 +1,1 @@
+{"value": "((self (discovery OR expression)) OR mediocrity OR boundaries OR vulnerable OR authentic OR \"I find myself\" OR \"they don't know\" OR \"i made it\") -empire -fraud -phony -real -education -journey lang:en followers_count:5..100 tweets_count:0..2500 following_count:0..500 -has:hashtags -has:cashtags -is:retweet -is:quote -is:reply", "tag":"SelfandID"}
