@@ -1,1 +1,5 @@
 {"value": "((self (discovery OR expression)) OR mediocrity OR boundaries OR vulnerable OR authentic OR \"I find myself\" OR \"they don't know\" OR \"i made it\") -empire -fraud -phony -real -education -journey lang:en followers_count:5..100 tweets_count:0..2500 following_count:0..500 -has:hashtags -has:cashtags -is:retweet -is:quote -is:reply", "tag":"SelfandID"}
+
+{"value": " (\"vanishing mediator\" OR \"narrative shift\" OR \"social norms\" OR \"value judgements\" OR \"public view\" OR zeitgeist OR \"paradigm shift\" OR hypernormalisation) -principles -morals lang:en followers_count:5..100 tweets_count:0..2500 following_count:0..500 -has:hashtags -has:cashtags -is:retweet -is:quote -is:reply","tag":"SocietalShift"}
+
+{"value": " (\"bored of twitter\" OR \"tired of twitter\" OR \"finished with twitter\" OR \"nothing left on twitter\") OR \"End of History\" OR discursive OR \"portal to another world\" OR \" is there nowhere else \"  -thread lang:en followers_count:5..100 tweets_count:0..2500 following_count:0..500 -has:hashtags -has:cashtags -is:retweet -is:quote -is:reply","tag":"EndOfTwitter"}
